@@ -7,10 +7,10 @@ public class CounterTester
 
         Counter counter = new Counter();
 
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<100; i++) {
             CounterThread ct = new CounterThread(counter);
             ct.start();
-            // ct.join(1000);
+            ct.join();
         }
         Thread.sleep(1000);
         
@@ -36,7 +36,7 @@ class CounterThread extends Thread
     private Counter counter;
     
     public CounterThread(Counter counter) {
-        System.out.println("Создаётся CounterThread");
+        // System.out.println("Создаётся CounterThread");
         this.counter = counter;
     }
     
