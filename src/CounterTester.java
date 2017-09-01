@@ -4,8 +4,9 @@ public class CounterTester
 {
     public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();
+        int max = 10;
 
-        for(int i=0; i<100; i++) {
+        for(int i=0; i<10; i++) {
             CounterThread ct = new CounterThread(counter);
             ct.start();
             // ct.join(1000); // коллизий нет, котому что ждём, пока поток завершится (отработает)
@@ -20,8 +21,8 @@ class Counter
 {
     private long counter = 0L;
     
-    public void increaseCounter() {
-    // public synchronized void increaseCounter() {
+    //public void increaseCounter() {
+    public synchronized void increaseCounter() {
         counter++;
     }
     
